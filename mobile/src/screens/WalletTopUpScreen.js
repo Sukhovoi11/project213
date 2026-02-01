@@ -42,8 +42,12 @@ export default function WalletTopUpScreen() {
       notify('Przychód został dodany');
       setAmount('');
       loadBalance();
-    } catch {
-      notify('Błąd zapisu przychodu');
+    } catch (err) {
+      const message =
+        err?.response?.data?.message ||
+        err?.message ||
+        'Błąd zapisu przychodu';
+      notify(message);
     }
   };
 

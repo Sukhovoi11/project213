@@ -28,15 +28,19 @@ export default function LoginScreen({ navigation, onLogin }) {
       const res = await api.post('/auth/login', { email, password });
       onLogin(res.data.token);
     } catch (err) {
+      const message =
+        err?.response?.data?.message ||
+        err?.message ||
+        'Nie udało się zalogować. Sprawdź połączenie z serwerem.';
       console.log('ERR LOGIN:', err?.response?.data || err.message);
-      notify('Błąd', 'Nie udało się zalogować. Sprawdź połączenie z serwerem.');
+      notify('Błąd', message);
     }
   };
 
   return (
       <View style={styles.container}>
         <View style={styles.authCard}>
-          <Text style={styles.title}>Finanse osobiste</Text>
+}
           <Text style={styles.subtitle}>
             Mobilna aplikacja do zarządzania finansami osobistymi
           </Text>

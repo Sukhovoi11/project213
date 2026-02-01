@@ -3,12 +3,23 @@ import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 
 const getBaseURL = () => {
+  const envUrl =
+    process.env.EXPO_PUBLIC_API_URL ||
+    Constants.expoConfig?.extra?.apiUrl ||
+    Constants.manifest?.extra?.apiUrl ||
+    Constants.manifest2?.extra?.expoClient?.extra?.apiUrl;
+
+  if (envUrl) {
+    console.log('Using API URL from env/extra:', envUrl);
+    return envUrl;
+  }
+
   if (Platform.OS === 'web') {
     return 'http://localhost:3000/api';
   }
 
   if (__DEV__) {
-    const hostUri =
+export default api;
       Constants.expoConfig?.hostUri ||
       Constants.expoConfig?.debuggerHost ||
       Constants.manifest?.debuggerHost ||
