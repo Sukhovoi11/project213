@@ -24,7 +24,7 @@ export default function PortfolioScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Podsumowanie finansowe</Text>
+      <Text style={styles.title}>Budżet i saldo</Text>
       <Text style={{ color: '#64748B', marginBottom: 14 }}>
         Aktualny stan budżetu
       </Text>
@@ -39,8 +39,8 @@ export default function PortfolioScreen() {
             <View style={styles.cardRow}>
               <Text style={{ fontWeight: '800' }}>
                 {item.currency_code === 'PLN'
-                  ? 'Budżet główny'
-                  : `Kategoria: ${item.currency_code}`}
+                  ? 'Saldo główne'
+                  : `Inne środki: ${item.currency_code}`}
               </Text>
 
               <Text style={{ fontWeight: '700' }}>

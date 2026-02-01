@@ -16,12 +16,12 @@ export default function DashboardScreen({ navigation, onLogout }) {
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Panel użytkownika</Text>
 
-      <Btn title="Zasil budżet" screen="WalletTopUp" />
-      <Btn title="Dodaj wydatek" screen="Trade" />
-      <Btn title="Budżet" screen="Portfolio" />
-      <Btn title="Historia operacji" screen="History" />
-      <Btn title="Dane NBP" screen="Rates" />
-      <Btn title="Analiza trendów" screen="RatesHistory" />
+      <Btn title="Dodaj przychód" screen="WalletTopUp" />
+      <Btn title="Transakcje" screen="Trade" />
+      <Btn title="Budżet i saldo" screen="Portfolio" />
+      <Btn title="Historia transakcji" screen="History" />
+      <Btn title="Kategorie" screen="Rates" />
+      <Btn title="Statystyki" screen="BudgetAnalysis" />
 
       <TouchableOpacity onPress={onLogout}>
         <Text style={{ color: 'red', marginTop: 20 }}>Wyloguj</Text>

@@ -11,7 +11,7 @@ router.post('/topup', auth, (req, res) => {
   const currency = 'PLN';
 
   if (!amount || amount <= 0)
-    return res.status(400).json({ message: 'Kwota doładowania musi być większа niż 0' });
+    return res.status(400).json({ message: 'Kwota przychodu musi być większa niż 0' });
 
 
   db.get(
@@ -23,7 +23,7 @@ router.post('/topup', auth, (req, res) => {
           'UPDATE WALLET_BALANCE SET amount = amount + ? WHERE balance_id = ?',
           [amount, row.balance_id],
           (err2) => {
-            if (err2) return res.status(500).json({ message: 'Błąd bazy danych Elitekantor' });
+            if (err2) return res.status(500).json({ message: 'Błąd bazy danych' });
             res.json({ message: 'Saldo zostało pomyślnie zaktualizowane' });
           }
         );
@@ -33,7 +33,7 @@ router.post('/topup', auth, (req, res) => {
           [userId, currency, amount],
           (err2) => {
             if (err2) return res.status(500).json({ message: 'DB error' });
-            res.json({ message: 'Nowy portfel walutowy został otwarty' });
+            res.json({ message: 'Budżet został utworzony' });
           }
         );
       }
