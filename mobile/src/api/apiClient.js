@@ -8,7 +8,12 @@ const getBaseURL = () => {
   }
 
   if (__DEV__) {
-    const host = Constants.expoConfig?.hostUri?.split(':')[0];
+    const hostUri =
+      Constants.expoConfig?.hostUri ||
+      Constants.expoConfig?.debuggerHost ||
+      Constants.manifest?.debuggerHost ||
+      Constants.manifest2?.extra?.expoClient?.hostUri;
+    const host = hostUri?.split(':')[0]?.split('/')[0];
     if (!host) {
       return 'http://10.0.2.2:3000/api';
     }
