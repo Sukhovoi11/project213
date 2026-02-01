@@ -6,6 +6,11 @@ require('dotenv').config();
 
 const router = express.Router();
 const jwtSecret = process.env.JWT_SECRET || 'dev-secret-change-me';
+    if (!process.env.JWT_SECRET) {
+      console.warn('JWT_SECRET is not set. Using development fallback secret.');
+    }
+
+        jwtSecret,
 
 
 router.post('/register', async (req, res) => {
