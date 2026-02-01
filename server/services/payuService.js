@@ -36,7 +36,7 @@ async function createPayuOrder(amountPln, description, customerEmail) {
     continueUrl: PAYU_RETURN_URL,
     customerIp: '127.0.0.1',
     merchantPosId: PAYU_POS_ID,
-    description: description || 'Doładowanie konta walutowego',
+    description: description || 'Dodaj przychód do budżetu',
     currencyCode: 'PLN',
     totalAmount: totalAmount.toString(),
     buyer: customerEmail
@@ -46,7 +46,7 @@ async function createPayuOrder(amountPln, description, customerEmail) {
       : undefined,
     products: [
       {
-        name: 'Doładowanie konta walutowego',
+        name: 'Dodaj przychód do budżetu',
         unitPrice: totalAmount.toString(),
         quantity: '1',
       },

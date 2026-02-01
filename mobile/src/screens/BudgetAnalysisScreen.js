@@ -9,8 +9,8 @@ export default function BudgetAnalysisScreen() {
 
   useEffect(() => {
     api.get('/expenses/analysis')
-      .then(res => setData(res.data))
-      .catch(err => console.log(err))
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err))
       .finally(() => setLoading(false));
   }, []);
 
@@ -18,9 +18,20 @@ export default function BudgetAnalysisScreen() {
     return <ActivityIndicator style={{ marginTop: 40 }} />;
   }
 
+  if (!data) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Statystyki budżetu</Text>
+        <Text style={{ color: '#64748B' }}>
+          Brak danych do analizy. Dodaj pierwsze wydatki, aby zobaczyć statystyki.
+        </Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Analiza wydatków</Text>
+      <Text style={styles.title}>Statystyki budżetu</Text>
 
       <Text>💸 Suma wydatków: {data.totalSpent.toFixed(2)} PLN</Text>
       <Text>🔥 Największy wydatek: {data.maxExpense.toFixed(2)} PLN</Text>
@@ -30,11 +41,17 @@ export default function BudgetAnalysisScreen() {
         Wydatki wg kategorii
       </Text>
 
-      {data.byCategory.map((c) => (
-        <Text key={c.category}>
-          {c.category}: {c.total.toFixed(2)} PLN
+      {data.byCategory.length ? (
+        data.byCategory.map((c) => (
+          <Text key={c.category}>
+            {c.category}: {c.total.toFixed(2)} PLN
+          </Text>
+        ))
+      ) : (
+        <Text style={{ color: '#64748B' }}>
+          Brak danych o kategoriach.
         </Text>
-      ))}
+      )}
     </View>
   );
 }

@@ -16,7 +16,7 @@ router.post('/payu/create', auth, async (req, res) => {
 
     const result = await createPayuOrder(
         value,
-        'Elitekantor - Doładowanie konta', // Обновлено описание
+        'Finanse osobiste - Dodaj przychód',
         user?.email
     );
 

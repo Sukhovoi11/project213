@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 require('dotenv').config();
 
-const dbPath = path.join(__dirname, process.env.DB_FILE || 'elitekantor.db');
+const dbPath = path.join(__dirname, process.env.DB_FILE || 'finanse.db');
 const db = new sqlite3.Database(dbPath);
 
 db.serialize(() => {

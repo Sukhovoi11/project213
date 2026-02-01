@@ -10,7 +10,7 @@ import RatesScreen from '../screens/RatesScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import PortfolioScreen from '../screens/PortfolioScreen';
 import TradeScreen from '../screens/AddExpenseScreen';
-import RatesHistoryScreen from '../screens/RatesHistoryScreen';
+import BudgetAnalysisScreen from '../screens/BudgetAnalysisScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,33 +35,33 @@ export default function AppNavigator({ isLoggedIn, onLogin, onLogout }) {
             >
                 {!isLoggedIn ? (
                     <>
-                        <Stack.Screen name="Login" options={{ title: 'EliteKantor – Zaloguj się' }}>
+                        <Stack.Screen name="Login" options={{ title: 'Finanse osobiste – Zaloguj się' }}>
                             {(props) => <LoginScreen {...props} onLogin={onLogin} />}
                         </Stack.Screen>
-                        <Stack.Screen name="Register" options={{ title: 'Nowe Konto Premium' }}>
+                        <Stack.Screen name="Register" options={{ title: 'Utwórz konto' }}>
                             {(props) => <RegisterScreen {...props} />}
                         </Stack.Screen>
                     </>
                 ) : (
                     <>
-                        <Stack.Screen name="Dashboard" options={{ title: 'ELITEKANTOR' }}>
+                        <Stack.Screen name="Dashboard" options={{ title: 'Finanse osobiste' }}>
                             {(props) => <DashboardScreen {...props} onLogout={onLogout} />}
                         </Stack.Screen>
 
                         <Stack.Screen
                             name="WalletTopUp"
                             component={WalletTopUpScreen}
-                            options={{ title: 'Zasilenie Konta' }}
+                            options={{ title: 'Dodaj przychód' }}
                         />
                         <Stack.Screen
                             name="Trade"
                             component={TradeScreen}
-                            options={{ title: 'Giełda Walut' }}
+                            options={{ title: 'Transakcje' }}
                         />
                         <Stack.Screen
                             name="Rates"
                             component={RatesScreen}
-                            options={{ title: 'Kursy na Żywo' }}
+                            options={{ title: 'Kategorie' }}
                         />
                         <Stack.Screen
                             name="History"
@@ -71,12 +71,12 @@ export default function AppNavigator({ isLoggedIn, onLogin, onLogout }) {
                         <Stack.Screen
                             name="Portfolio"
                             component={PortfolioScreen}
-                            options={{ title: 'Twój Portfel' }}
+                            options={{ title: 'Budżet i saldo' }}
                         />
                         <Stack.Screen
-                            name="RatesHistory"
-                            component={RatesHistoryScreen}
-                            options={{ title: 'Statystyki NBP' }}
+                            name="BudgetAnalysis"
+                            component={BudgetAnalysisScreen}
+                            options={{ title: 'Statystyki' }}
                         />
                     </>
                 )}

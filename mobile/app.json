@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Elite-Kantor",
-    "slug": "Elite-Kantor",
+    "name": "Mobilna aplikacja do zarządzania finansami osobistymi",
+    "slug": "finanse-osobiste",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
